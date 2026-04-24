@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+
+  <!-- ============================================================
+       ✏️  配置区域 — 只需修改这里，不用动下面的任何代码
+       ============================================================ -->
+  <script>
+
+    // ─── 顶部 Hero 区域 ──────────────────────────────────────────
+    const hero = {
+      name:    "Yihua Yang",
+      tagline: "AI Engineer",  // 职位和城市
+
+      // 头像：填写图片路径或 URL（如 "avatar.jpg" 或 "https://..."）
+      // 若留空，则自动显示名字首字母作为占位头像
+      avatar: "avatar.jpg"
+    };
+
+    // ─── About ───────────────────────────────────────────────────
+    const about = "Keep your eyes on the stars and your feet on the ground.";
+
+    // ─── Work Experience ─────────────────────────────────────────
+    // 字段说明：
+    //   years    — 时间段，如 "2022 — Now"
+    //   title    — 职位名称
+    //   url      — 链接，无链接填 null
+    //   location — 地点，不需要则删掉该行
+    const work = [
+      {
+        years:    "Sept 2025 — Now",
+        title:    "Jiangyin Big Data Co., Ltd.",
+        url:      "https://www.bigdatajy.com",
+        location: "Jiangyin, CN",
+        // 子职位列表（可选）：用于展示同一公司内的轮岗经历
+        roles: [
+          { period: "Sept 1, 2025 — Sept 23, 2025", dept: "Jiangyin Big Data Co., Ltd." },
+          { period: "Sept 24, 2025 — Now", dept: "Jiangyin Digital Economy Promotion and Development Co., Ltd. (Rotation)" }
+        ]
+      },
+      {
+        years:    "Dec 2023 — May 2025",
+        title:    "National Supercomputing Center in Wuxi",
+        url:      "https://www.nsccwx.cn",
+        location: "Wuxi, CN"
+      },
+      {
+        years:    "Feb 2022 — Dec 2023",
+        title:    "Huawei Technologies Co., Ltd.",
+        url:      "https://www.huawei.com",
+        location: "Nanjing, CN"
+      },
+    ];
+
+    // ─── Education ───────────────────────────────────────────────
+    const education = [
+      {
+        years:    "Sept 2020 — Sept 2021",
+        title:    "MSc Scientific and Data Intensive Computing",
+        url:      "https://www.ucl.ac.uk",
+        location: "University College London, London, UK"
+      },
+      {
+        years:    "Sept 2019 — Jul 2020",
+        title:    "BSc Mathematics and Applied Mathematics",
+        url:      "https://www.reading.ac.uk",
+        location: "University of Reading, Reading, UK"
+      },
+      {
+        years:    "Sept 2016 — Jun 2020",
+        title:    "BSc Mathematics and Applied Mathematics",
+        url:      "https://www.nuist.edu.cn",
+        location: "Nanjing University of Information Science & Technology, Nanjing, CN"
+      }
+    ];
+
+    // ─── Contact ─────────────────────────────────────────────────
+    // 字段说明：
+    //   platform — 平台名称
+    //   label    — 显示文字
+    //   url      — 完整链接，邮件用 "mailto:xxx@xxx.com"
+    const contact = [
+      {
+        platform: "Email",
+        label:    "yihua.yang@zohomail.com",
+        url:      "mailto:yihua.yang@zohomail.com"
+      },
+      {
+        platform: "GitHub",
+        label:    "realYihuaYang",
+        url:      "https://github.com/realYihuaYang"
+      }
+    ];
+
+  </script>
+  <!-- ============================================================
+       以下为样式与渲染代码，无需修改
+       ============================================================ -->
+
+
+  <style>
+    :root {
+      --bg: #f5f2ed;
+      --surface: #ede9e2;
+      --text: #1a1916;
+      --muted: #7a756c;
+      --accent: #2d6a4f;
+      --border: #d8d3ca;
+      --link: #1a1916;
+      --radius: 3px;
+      --max-w: 680px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 64px 24px 100px;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 56px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .avatar-img {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+
+    .avatar-placeholder {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #c9c0b0 0%, #a09880 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: #fff;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      border: 2px solid var(--border);
+    }
+
+    .hero-info { padding-top: 4px; }
+
+    .hero-name {
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .hero-meta {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 48px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .section:nth-child(2) { animation-delay: 0.05s; }
+    .section:nth-child(3) { animation-delay: 0.10s; }
+    .section:nth-child(4) { animation-delay: 0.15s; }
+    .section:nth-child(5) { animation-delay: 0.20s; }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.2px;
+    }
+
+    /* About */
+    .about-text {
+      color: #3d3a35;
+      font-size: 15.5px;
+      max-width: 540px;
+    }
+
+    /* Entry rows */
+    .entries { display: flex; flex-direction: column; }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 152px 1fr;
+      gap: 0 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .entry:last-child { border-bottom: none; }
+    .entry:hover { background: rgba(0,0,0,0.015); border-radius: var(--radius); }
+
+    .entry-year {
+      color: var(--muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+      padding-top: 1px;
+      white-space: nowrap;
+    }
+
+    .entry-body { min-width: 0; }
+
+    .entry-title {
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--link);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      line-height: 1.4;
+    }
+    .entry-title.no-link { cursor: default; }
+    .entry-title:not(.no-link):hover { color: var(--accent); }
+    .entry-title .arrow {
+      opacity: 0;
+      transition: opacity 0.15s, transform 0.15s;
+      font-size: 12px;
+      transform: translateX(-3px);
+    }
+    .entry-title:not(.no-link):hover .arrow { opacity: 1; transform: translateX(0); }
+
+    .entry-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* 子职位（轮岗） */
+    .entry-roles {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding-left: 12px;
+      border-left: 2px solid var(--border);
+    }
+
+    .entry-role {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .entry-role-dept {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .entry-role-period {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-list { display: flex; flex-direction: column; }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-item:last-child { border-bottom: none; }
+
+    .contact-platform {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--link);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .contact-link.no-link { cursor: default; }
+    .contact-link:not(.no-link):hover { color: var(--accent); }
+    .contact-link .arrow {
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity 0.15s, transform 0.15s;
+      transform: translateX(-3px);
+    }
+    .contact-link:not(.no-link):hover .arrow { opacity: 1; transform: translateX(0); }
+
+    /* Animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 520px) {
+      .hero { flex-direction: column; gap: 16px; }
+      .entry { grid-template-columns: 1fr; gap: 2px; }
+      .entry-year { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page" id="app"></div>
+
+<script>
+  (function () {
+    const app = document.getElementById('app');
+
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function entryRow({ years, title, url, location, roles }) {
+      const titleHtml = url
+        ? `<a href="${esc(url)}" class="entry-title" target="_blank" rel="noopener">${esc(title)} <span class="arrow">↗</span></a>`
+        : `<span class="entry-title no-link">${esc(title)}</span>`;
+      const locHtml = location ? `<div class="entry-sub">${esc(location)}</div>` : '';
+      const rolesHtml = roles && roles.length
+        ? `<div class="entry-roles">${roles.map(r => `
+            <div class="entry-role">
+              <span class="entry-role-dept">${esc(r.dept)}</span>
+              <span class="entry-role-period">${esc(r.period)}</span>
+            </div>`).join('')}</div>`
+        : '';
+      return `<div class="entry">
+        <span class="entry-year">${esc(years)}</span>
+        <div class="entry-body">${titleHtml}${locHtml}${rolesHtml}</div>
+      </div>`;
+    }
+
+    // Hero
+    const initial = hero.name.trim().charAt(0).toUpperCase();
+    const avatarHtml = hero.avatar
+      ? `<img src="${esc(hero.avatar)}" class="avatar-img" alt="${esc(hero.name)}" />`
+      : `<div class="avatar-placeholder">${esc(initial)}</div>`;
+
+    // Contact
+    const contactItems = contact.map(({ platform, label, url }) => {
+      const isMailto = url && url.startsWith('mailto');
+      const linkHtml = url
+        ? `<a href="${esc(url)}" class="contact-link" ${isMailto ? '' : 'target="_blank" rel="noopener"'}>${esc(label)} <span class="arrow">↗</span></a>`
+        : `<span class="contact-link no-link">${esc(label)}</span>`;
+      return `<div class="contact-item">
+        <span class="contact-platform">${esc(platform)}</span>
+        ${linkHtml}
+      </div>`;
+    }).join('');
+
+    // Render
+    app.innerHTML = `
+      <header class="hero">
+        ${avatarHtml}
+        <div class="hero-info">
+          <h1 class="hero-name">${esc(hero.name)}</h1>
+          <div class="hero-meta">
+            <span>${esc(hero.tagline)}</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2 class="section-title">About</h2>
+        <p class="about-text">${esc(about)}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="entries">${work.map(entryRow).join('')}</div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        <div class="entries">${education.map(entryRow).join('')}</div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-list">${contactItems}</div>
+      </section>
+    `;
+
+    document.title = `${hero.name} - AI Engineer`;
+  })();
+</script>
+</body>
+</html>
