@@ -335,9 +335,28 @@
 
     /* Responsive */
     @media (max-width: 520px) {
-      .hero { flex-direction: column; gap: 16px; }
-      .entry { grid-template-columns: 1fr; gap: 2px; }
-      .entry-year { padding-top: 0; }
+      .page { padding: 40px 18px 80px; }
+
+      .hero { flex-direction: row; align-items: center; gap: 14px; margin-bottom: 40px; }
+      .avatar-img, .avatar-placeholder { width: 56px; height: 56px; font-size: 20px; }
+      .hero-name { font-size: 20px; }
+      .hero-meta { font-size: 13px; }
+
+      .section-title { font-size: 16px; }
+      .section { margin-bottom: 36px; }
+
+      .entry { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+      .entry-year { padding-top: 0; font-size: 12px; }
+      .entry-title { font-size: 13.5px; }
+      .entry-sub { font-size: 12px; }
+
+      .entry-role-dept { font-size: 12px; }
+      .entry-role-period { font-size: 11px; }
+
+      .about-text { font-size: 14.5px; }
+
+      .contact-link { font-size: 13px; }
+      .contact-platform { font-size: 11px; }
     }
   </style>
 </head>
